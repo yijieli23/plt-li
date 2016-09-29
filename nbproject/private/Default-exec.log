@@ -1,0 +1,16 @@
+called: /usr/bin/g++
+	/home/jean/plt-li/build
+	/usr/bin/g++
+	-I/home/jean/plt-li/src
+	-Wall
+	-std=c++11
+	-pthread
+	-g
+	-O3
+	-DNDEBUG
+	-std=gnu++11
+	-o
+	CMakeFiles/run.dir/src/state/Exemple.cpp.o
+	-c
+	/home/jean/plt-li/src/state/Exemple.cpp
+
