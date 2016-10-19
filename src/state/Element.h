@@ -8,13 +8,11 @@ namespace state {
 }
 
 #include "Direction.h"
-#include "TypeId.h"
 
 namespace state {
 
   /// class Element - 
   class Element {
-    // Associations
     // Attributes
   protected:
     int x;

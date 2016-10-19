@@ -5,17 +5,15 @@
  */
 #include "EnemyTank.h"
 namespace state{
-EnemyTank::EnemyTank()
+EnemyTank::EnemyTank(MobileTypeId mi): MobileElement(mi)
 {
+    
 }
 bool EnemyTank::isEnemyTank() const
 {
     return true;
 }
-TypeId EnemyTank::getTypeId() const
-{
-    return ENEMYTANK;
-}
+
  Element* EnemyTank::clone() const
 {
     return new EnemyTank(*this);

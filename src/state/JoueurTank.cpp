@@ -7,9 +7,10 @@
 
 namespace state{
 
-JoueurTank::JoueurTank()
+JoueurTank::JoueurTank(MobileTypeId mi): MobileElement(mi)
 {
-    
+    life=1;
+    speed=1;
 }
 bool JoueurTank::isJoueurTank()
 {

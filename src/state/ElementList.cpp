@@ -69,4 +69,4 @@ void ElementList::notifyObservers(int i) const
 //    ListEvent listEvent(*this, i);
 //    Observable::notifyObservers(listEvent);
 }
-}
+};

@@ -7,6 +7,7 @@ namespace state {
   class Element;
 }
 
+#include "MobileTypeId.h"
 #include "Direction.h"
 #include "Element.h"
 #include "MobileStatus.h"
@@ -16,6 +17,7 @@ namespace state {
   /// class MobileElement - 
   class MobileElement : public state::Element {
     // Associations
+    state::MobileTypeId mobileId;
     state::MobileStatus status;
     state::Direction direction;
     // Attributes
@@ -25,7 +27,7 @@ namespace state {
     int color;
     // Operations
   public:
-    MobileElement ();
+    MobileElement (MobileTypeId mi);
     bool equals (const Element& other) const;
     bool isStatic () const;
     Direction getDirection () const;
@@ -37,6 +39,8 @@ namespace state {
     void setPosition (int position);
     void attack ();
     void beingattacked ();
+    MobileTypeId getMobileTypeId () const;
+    void setMobileTypeId (MobileTypeId mi);
   };
 
 };

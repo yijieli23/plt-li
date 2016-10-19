@@ -8,24 +8,19 @@ namespace state {
   class MobileElement;
 }
 
-#include "TypeId.h"
-#include "TankTypeId.h"
+#include "MobileTypeId.h"
 #include "MobileElement.h"
 
 namespace state {
 
   /// class EnemyTank - 
   class EnemyTank : public state::MobileElement {
-    // Associations
-    state::TankTypeId tankTypeId;
     // Operations
   public:
-    EnemyTank ();
+    EnemyTank (MobileTypeId mi);
     bool isEnemyTank () const;
-    TypeId getTypeId () const;
     Element* clone () const;
     void setColor (int c);
-    void setTypeId (TankTypeId id);
   };
 
 };

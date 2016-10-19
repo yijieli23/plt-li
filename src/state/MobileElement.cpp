@@ -5,8 +5,26 @@
  */
 #include "MobileElement.h"
 namespace state{
-MobileElement::MobileElement()
-{}
+MobileElement::MobileElement(MobileTypeId mi):mobileId(mi)
+{
+    switch(mi)
+    {
+        case(JOUEUR):
+            life=1;
+            speed=1;
+            break;
+            
+        case(NORMAL):
+            life=1;
+            speed=1;
+            break;
+        case(QUICK):
+            life=1;
+            speed=2;
+            break;
+        
+    }
+}
 bool MobileElement::equals(const Element& other) const
 {
 //    if((this->x==other.getX())&&(this->y==other.getY())&&
@@ -34,6 +52,10 @@ int MobileElement::getColor() const
 {
     return color;
 }
+MobileTypeId MobileElement::getMobileTypeId() const
+{
+    return mobileId;
+}
 void MobileElement::setDirection(Direction d)
 {
     orientation=d;
@@ -52,5 +74,9 @@ void MobileElement::attack()
 void MobileElement::beingattacked()
 {
     this->life--;
+}
+void MobileElement::setMobileTypeId(MobileTypeId mi)
+{
+    mobileId=mi;
 }
 };
