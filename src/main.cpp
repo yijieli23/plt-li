@@ -49,6 +49,8 @@ int main()
     render::SFMLSurface map;
     if (!map.load("../res/Battle City.png", sf::Vector2u(16, 16), level, 18, 16))
         return -1;
+    window.setPosition(sf::Vector2i(100, 100));
+    window.setSize(sf::Vector2u(640, 480));
 
     while (window.isOpen())
     {
