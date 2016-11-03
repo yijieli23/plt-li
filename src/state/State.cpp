@@ -58,10 +58,10 @@ ElementList& State::getChars()
 {
     return chars;
 }
-/*
-const MobileElement* const State::getChar(int idx)
+
+const MobileElement* State::getChar(int idx) const
 {
-    return (MobileElement*)(char.get(idx));
+    return (MobileElement*)(chars.get(idx));
 }
 
 MobileElement* State::getChar(int idx)
@@ -69,7 +69,7 @@ MobileElement* State::getChar(int idx)
     return (MobileElement*)(chars.get(idx));
 }
 
- */
+ 
 void State::setElementFactory(ElementFactory* f)
 {
     chars.setElementFactory(f);

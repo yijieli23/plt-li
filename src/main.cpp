@@ -42,18 +42,48 @@ int main()
          21 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 21 , 298, 299, 21 ,
          21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 323, 324, 21 ,
          41 , 41 , 21 , 21 , 21 , 21 , 17 , 18 , 19 , 21 , 21 , 21 , 21 , 41 , 41 , 348, 349, 21 ,
-         21 , 21 , 21 , 21 , 1  , 21 , 17 , 69 , 19 , 21 , 21 , 21 , 21 , 21 , 21 , 23 , 24 , 21 ,
+         21 , 21 , 21 , 21 , 21 , 21 , 17 , 69 , 19 , 21 , 21 , 21 , 21 , 21 , 21 , 23 , 24 , 21 ,
 
     }; 
 
     render::SFMLSurface map;
     if (!map.load("../res/Battle City.png", sf::Vector2u(16, 16), level, 18, 16))
         return -1;
+    sf::Texture tex1;
+    if(!tex1.loadFromFile("../res/joueur1.png"))
+    {
+        
+    }
+    
+    sf::Sprite jou;
+    jou.setTexture(tex1);
+    
     window.setPosition(sf::Vector2i(100, 100));
     window.setSize(sf::Vector2u(640, 480));
 
     while (window.isOpen())
     {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            jou.setRotation(270);
+            jou.move(-0.1,0);
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            jou.setRotation(90);
+            jou.move(0.1,0);
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            jou.setRotation(360);
+            jou.move(0,-0.1);
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            jou.setRotation(180);
+            jou.move(0,0.1);
+        }
+        
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -63,6 +93,7 @@ int main()
 
         window.clear();
         window.draw(map);
+        window.draw(jou);
         window.display();
     }
 

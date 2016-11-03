@@ -2,5 +2,5 @@
 #ifndef __STATE__H
 #define __STATE__H
 
-#include "state/StateObserver.h" 
+#include "state/StateObserver.h"
 #endif
