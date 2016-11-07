@@ -8,7 +8,7 @@
 #include "../state/ElementList.h"
 namespace render{
     void ElementListLayer::update(const state::ElementList& list, int i)
-{
+{/*
 	int cellWidth = tileset->getCellWidth();
 	int cellHeight = tileset->getCellHeight();
 	int j;
@@ -40,7 +40,7 @@ namespace render{
 		const Tile* tile = tileset->getElementTile(e);
 		surface->setSpriteTexture(i, (StaticTile*)tile);
 		surface->setSpriteLocation(i, e->getY()*cellWidth, e->getX()*cellHeight);
-	}
+	}*/
 }
 
 void ElementListLayer::stateChanged(const state::StateEvent& e)

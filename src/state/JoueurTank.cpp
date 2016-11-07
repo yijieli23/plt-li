@@ -9,8 +9,9 @@ namespace state{
 
 JoueurTank::JoueurTank(MobileTypeId mi): MobileElement(mi)
 {
+     
     life=1;
-    speed=1;
+    speed=0.1;
 }
 bool JoueurTank::isJoueurTank()
 {
@@ -25,4 +26,5 @@ void JoueurTank::addlife(int lifenum)
 {
     this->life+=lifenum;
 }
+
 };

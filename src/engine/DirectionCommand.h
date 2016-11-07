@@ -2,6 +2,8 @@
 #ifndef ENGINE__DIRECTIONCOMMAND__H
 #define ENGINE__DIRECTIONCOMMAND__H
 #include "../state/State.h"
+#include <iostream>
+
 
 namespace engine {
   class Command;
@@ -9,7 +11,8 @@ namespace engine {
 
 #include "CommandTypeId.h"
 #include "Command.h"
-
+#include "../state/JoueurTank.h"
+#include <SFML/Graphics.hpp>
 namespace engine {
 
   /// class DirectionCommand - 
@@ -18,14 +21,18 @@ namespace engine {
   protected:
     int character;
     state::Direction direction;
+//    state::JoueurTank jou1 = new state::JoueurTank();
+    
     // Operations
   public:
-    DirectionCommand (int c, state::Direction d);
+      
+    DirectionCommand ();
     CommandTypeId getTypeId () const;
     int getCharacter () const;
     state::Direction getDirection () const;
     void setCharacter (int character);
     void setDirection (state::Direction direction);
+    void DirectionJoueur (sf::Sprite jou);
   };
 
 };

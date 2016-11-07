@@ -11,7 +11,7 @@ MobileElement::MobileElement(MobileTypeId mi):mobileId(mi)
     {
         case(JOUEUR):
             life=1;
-            speed=1;
+            speed=0.1;
             break;
             
         case(NORMAL):

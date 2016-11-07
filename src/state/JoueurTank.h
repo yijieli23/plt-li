@@ -2,6 +2,7 @@
 #ifndef STATE__JOUEURTANK__H
 #define STATE__JOUEURTANK__H
 
+#include <SFML/Graphics.hpp>
 
 namespace state {
   class Element;
@@ -17,10 +18,13 @@ namespace state {
   class JoueurTank : public state::MobileElement {
     // Operations
   public:
-    JoueurTank (MobileTypeId mi);
+    sf::Sprite jou;
+    JoueurTank(MobileTypeId mi);
     bool isJoueurTank ();
     Element* clone () const;
     void addlife (int lifenum);
+    
+    sf::Sprite getjou();
   };
 
 };

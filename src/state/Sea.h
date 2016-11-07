@@ -16,6 +16,7 @@ namespace state {
   class Sea : public state::StaticElement {
     // Operations
   public:
+    
     Sea ();
     Element* clone () const;
   };
