@@ -3,12 +3,16 @@
 #define RENDER__ELEMENTLISTLAYER__H
 
 
+namespace state {
+  class ElementList;
+};
 namespace render {
   class Layer;
 }
 
 #include "Layer.h"
-#include "../state/ElementList.h"
+#include "state/ElementList.h"
+
 namespace render {
 
   /// class ElementListLayer - 

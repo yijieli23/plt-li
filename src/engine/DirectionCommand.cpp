@@ -9,11 +9,10 @@
 #include "render/Surface.h"
 
 namespace engine{
-    DirectionCommand::DirectionCommand()
-    {
-//        id = DIRECTION;
-        
-    }
+    DirectionCommand::DirectionCommand(int c,state::Direction d) : character(c),direction(d)
+{
+	//id = DIRECTION;
+}
     CommandTypeId DirectionCommand::getTypeId() const
     {
  //       return id;
@@ -26,10 +25,5 @@ namespace engine{
     {
         return direction;
     }
-    void DirectionCommand::DirectionJoueur(sf::Sprite jou)
-    {
-        
-     
-        
-    }
+    
 };

@@ -5,10 +5,14 @@
 
 namespace render {
   class Tile;
+};
+namespace state {
+  class Element;
 }
 
+#include "state/Element.h"
 #include "Tile.h"
-#include "../state/Element.h"
+
 namespace render {
 
   /// class TileSet - 

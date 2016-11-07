@@ -40,18 +40,7 @@ namespace engine{
     }
     void Record::startReplay()
     {
-        int i;
-        initState=&mainState;
-        state::State *newState;
-        for(i=0;i<actions.size();i++)
-        {
-		actions[i]->apply();
-		newState = new state::State;
-		newState->copy(*initState);
-		newState->setEpoch(mainState.getEpoch()+1);
-		initState = newState;
-		delete newState;
-	}        
+        
     }
     bool Record::replayOne()
     {
@@ -61,16 +50,7 @@ namespace engine{
     {
         int i;
 //	lastState = &mainState;
-	state::State *prevState;
-	for(i=actions.size();i>=0;i++)
-	{
-		actions[i]->undo();
-		prevState = new state::State;
-		prevState->copy(*lastState);
-		prevState->setEpoch(mainState.getEpoch()-1);
-		lastState = prevState;
-		delete prevState;
-	}
+	
     }
     bool Record::rollbackOne()
     {

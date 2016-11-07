@@ -5,6 +5,12 @@
  */
 
 #include "Ruler.h"
+#include "CommandSet.h"
+#include "DirectionCommand.h"
+#include <iostream>
+#include "../state/MobileElement.h"
+
+
 
 namespace engine{
     void Ruler::moveChar(int idx)
@@ -29,7 +35,7 @@ namespace engine{
     }
 
     void Ruler::apply()
-    {
+    {/*
             int i,idx;	
             Action* action;
             state::MobileElement* me;
@@ -123,6 +129,6 @@ namespace engine{
                                     actions.apply();
                                     break;
                     }
-            }
+            }*/
     }
 };

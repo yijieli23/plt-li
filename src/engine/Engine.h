@@ -5,6 +5,9 @@
 #include <mutex>
 #include <stdint.h>
 
+namespace state {
+  class State;
+};
 namespace engine {
   class CommandSet;
   class Command;
@@ -12,12 +15,11 @@ namespace engine {
   class Record;
 }
 
+#include "state/State.h"
 #include "EngineMode.h"
 #include "Ruler.h"
 #include "Record.h"
 #include "CommandSet.h"
-#include <stdint.h>
-
 
 namespace engine {
 
@@ -25,7 +27,7 @@ namespace engine {
   class Engine {
     // Associations
     engine::EngineMode mode;
-//    engine::Record record;
+    engine::Record record;
     // Attributes
   protected:
     state::ElementFactory factory;

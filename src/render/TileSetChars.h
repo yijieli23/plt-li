@@ -12,7 +12,6 @@ namespace render {
 #include "TileSet.h"
 #include "StaticTile.h"
 
-
 namespace render {
 
   /// class TileSetChars - 

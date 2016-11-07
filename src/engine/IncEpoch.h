@@ -2,7 +2,10 @@
 #ifndef ENGINE__INCEPOCH__H
 #define ENGINE__INCEPOCH__H
 
-#include "../state/State.h"
+
+namespace state {
+  class State;
+};
 namespace engine {
   class Action;
 }

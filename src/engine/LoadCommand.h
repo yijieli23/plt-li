@@ -10,7 +10,7 @@ namespace engine {
 
 #include "CommandTypeId.h"
 #include "Command.h"
-#include "../state/ElementAlloc.h"
+
 namespace engine {
 
   /// class LoadCommand - 

@@ -2,13 +2,15 @@
 #ifndef ENGINE__MOVECHARACTER__H
 #define ENGINE__MOVECHARACTER__H
 
-#include "../state/Direction.h"
-#include "../state/State.h"
-#include "../state/MobileElement.h"
+
+namespace state {
+  class State;
+};
 namespace engine {
   class Action;
 }
 
+#include "state/Direction.h"
 #include "Action.h"
 
 namespace engine {

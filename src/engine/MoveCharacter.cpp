@@ -7,6 +7,7 @@
 #include "MoveCharacter.h"
 #include "state/ElementList.h"
 #include "state/State.h"
+#include "../state/MobileElement.h"
 
 namespace engine{
     MoveCharacter::MoveCharacter(int idx): idx(idx)

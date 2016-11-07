@@ -7,6 +7,7 @@
 #include "render/SFMLSurface.h"
 #include "state/JoueurTank.h"
 #include "engine/DirectionCommand.h"
+#include "render/Surface.h"
 
 void testSFML() {
     sf::Texture texture;

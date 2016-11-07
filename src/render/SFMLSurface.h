@@ -2,20 +2,28 @@
 #ifndef RENDER__SFMLSURFACE__H
 #define RENDER__SFMLSURFACE__H
 
+#include <SFML/Graphics.hpp>
 #include <string>
 
 namespace render {
   class StaticTile;
+};
+namespace sf {
+  class Transformable;
+  class Drawable;
+};
+namespace render {
   class Surface;
 }
 
+#include "sf/Transformable.h"
+#include "sf/Drawable.h"
 #include "Surface.h"
-#include <SFML/Graphics.hpp>
 
 namespace render {
 
   /// class SFMLSurface - 
-  class SFMLSurface : public sf::Drawable, public sf::Transformable {
+  class SFMLSurface : public sf::Transformable, public sf::Drawable, public render::Surface {
     // Attributes
   protected:
     sf::VertexArray vertices;

@@ -5,7 +5,8 @@
  */
 
 #include "AttackUnit.h"
-
+#include <iostream>
+#include "../state/MobileElement.h"
 
 namespace engine{
     AttackUnit::AttackUnit(int idx): idx(idx)

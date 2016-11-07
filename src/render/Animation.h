@@ -9,8 +9,9 @@ namespace render {
   class Surface;
 }
 
+#include "state/Direction.h"
 #include "Tile.h"
-#include "../state/Direction.h"
+
 namespace render {
 
   /// class Animation - 

@@ -11,7 +11,6 @@ namespace state {
 #include "Direction.h"
 #include "Element.h"
 #include "MobileStatus.h"
-#include <SFML/Graphics.hpp>
 
 namespace state {
 
@@ -23,12 +22,11 @@ namespace state {
     state::Direction direction;
     // Attributes
   protected:
-    
+    float speed;
     int position;
     int color;
     // Operations
   public:
-    float speed;
     MobileElement (MobileTypeId mi);
     bool equals (const Element& other) const;
     bool isStatic () const;

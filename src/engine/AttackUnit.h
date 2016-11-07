@@ -2,16 +2,15 @@
 #ifndef ENGINE__ATTACKUNIT__H
 #define ENGINE__ATTACKUNIT__H
 
-#include "../state/State.h"
-#include "../state/Direction.h"
-#include "../state/ElementList.h"
-#include "../state/State.h"
-#include "../state/MobileElement.h"
-#include <iostream>
+
+namespace state {
+  class State;
+};
 namespace engine {
   class Action;
 }
 
+#include "state/Direction.h"
 #include "Action.h"
 
 namespace engine {

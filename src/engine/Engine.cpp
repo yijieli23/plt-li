@@ -6,8 +6,8 @@
 
 #include "Engine.h"
 namespace engine{
-    Engine::Engine()
-//    Engine::Engine() : record(currentState)
+    
+    Engine::Engine() : record(currentState)
 {
 
 }

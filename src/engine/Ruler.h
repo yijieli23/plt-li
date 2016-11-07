@@ -2,16 +2,16 @@
 #ifndef ENGINE__RULER__H
 #define ENGINE__RULER__H
 
-#include "../state/State.h"
-#include "../state/MobileElement.h"
-#include "Engine.h"
+
+namespace state {
+  class State;
+};
 namespace engine {
   class CommandSet;
   class ActionList;
 }
 
 #include "ActionList.h"
-
 
 namespace engine {
 

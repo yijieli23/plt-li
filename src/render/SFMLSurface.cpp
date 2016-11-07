@@ -8,6 +8,9 @@
 #include <iostream>
 #include "StaticTile.h"
 
+
+
+
 namespace render{
     void SFMLSurface::clear()
 {

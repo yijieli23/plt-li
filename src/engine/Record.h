@@ -3,17 +3,10 @@
 #define ENGINE__RECORD__H
 
 #include <vector>
-#include "../state/State.h"
-#include "Ruler.h"
-#include "DirectionCommand.h"
-#include "../state/MobileElement.h"
-#include "../state/Direction.h"
-#include <iostream>
-#include "MoveCharacter.h"
-#include "../state/State.h"
 
-
-
+namespace state {
+  class State;
+};
 namespace engine {
   class ActionList;
 }

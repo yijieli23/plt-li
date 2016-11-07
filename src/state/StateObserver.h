@@ -2,7 +2,11 @@
 #ifndef STATE__STATEOBSERVER__H
 #define STATE__STATEOBSERVER__H
 
-#include "StateEvent.h"
+
+namespace state {
+  class StateEvent;
+}
+
 namespace state {
 
   /// class StateObserver - 

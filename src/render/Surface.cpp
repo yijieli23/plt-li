@@ -5,7 +5,10 @@
  */
 
 #include "Surface.h"
-
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <SFML/Window.hpp>
+#include "SFMLSurface.h"
 
 namespace render{
       
@@ -15,10 +18,10 @@ namespace render{
         window.setPosition(sf::Vector2i(100, 100));
         window.setSize(sf::Vector2u(640, 480));
         sf::Clock clock;
-        const int level[] =
+         int level[] =
         {
-//       01 , 02 , 03 , 04 , 05 , 06 , 07 , 08 , 09 , 10 , 11 , 12 , 13 , 14 , 15 , 16 ,
-         110, 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 23 , 24 , 21 ,
+//       01 , 02 , 03 , 04 , 05 , 06 , 07 , 08 , 09 , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 17 , 18
+         0 ,  21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 23 , 24 , 21 ,
          21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 21 , 16 , 21 , 23 , 24 , 21 ,
          21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 21 , 16 , 21 , 23 , 24 , 21 ,
          21 , 16 , 21 , 21 , 16 , 21 , 16 , 41 , 16 , 21 , 16 , 140, 21 , 16 , 21 , 48 , 49 , 21 ,
@@ -35,10 +38,10 @@ namespace render{
          21 , 21 , 21 , 21 , 21 , 21 , 17 , 69 , 19 , 21 , 21 , 21 , 21 , 21 , 21 , 23 , 24 , 21 ,
 
         }; 
-        render::SFMLSurface map;
-        if (!map.load("../res/Battle City.png", sf::Vector2u(16, 16), level, 18, 16)){}
+        render::SFMLSurface map1;
+        if (!map1.load("../res/Battle City.png", sf::Vector2u(16, 16), level, 18, 16)){}
         
-        state::JoueurTank joueur(state::JOUEUR);
+//        state::JoueurTank joueur(state::JOUEUR);
         
         sf::Texture tex;
         if(!tex.loadFromFile("../res/joueur1.png")){}
@@ -52,8 +55,8 @@ namespace render{
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
            {
                std::cout<<"left"<<std::endl;
-               jou.setRotation(270);
-               jou.move(-joueur.speed,0);
+               
+
            }
    /*        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
            {
@@ -83,11 +86,11 @@ namespace render{
                    window.close();
            }
            
-           sf::Time elapsed = clock.restart();
+           
            
 
            window.clear();
-           window.draw(map);
+           window.draw(map1);
 //           window.draw(jou);
            window.display();
            
@@ -99,4 +102,5 @@ namespace render{
     {
         
     }
+    
 };
