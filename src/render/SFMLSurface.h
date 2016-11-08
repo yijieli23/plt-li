@@ -7,23 +7,19 @@
 
 namespace render {
   class StaticTile;
+  class Surface;
 };
 namespace sf {
   class Transformable;
   class Drawable;
-};
-namespace render {
-  class Surface;
 }
 
-#include "sf/Transformable.h"
-#include "sf/Drawable.h"
 #include "Surface.h"
 
 namespace render {
 
   /// class SFMLSurface - 
-  class SFMLSurface : public sf::Transformable, public sf::Drawable, public render::Surface {
+  class SFMLSurface : public render::Surface, public sf::Transformable, public sf::Drawable {
     // Attributes
   protected:
     sf::VertexArray vertices;

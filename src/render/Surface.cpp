@@ -39,12 +39,18 @@ namespace render{
 
         }; 
         render::SFMLSurface map1;
-        if (!map1.load("../res/Battle City.png", sf::Vector2u(16, 16), level, 18, 16)){}
+        if (!map1.load("../res/Battle City.png", sf::Vector2u(16, 16), level, 18, 16))
+        {
+            std::cout<<"wrong"<<std::endl;
+        }
         
 //        state::JoueurTank joueur(state::JOUEUR);
         
         sf::Texture tex;
-        if(!tex.loadFromFile("../res/joueur1.png")){}
+        if(!tex.loadFromFile("../res/joueur1.png"))
+        {
+            std::cout<<"wrong"<<std::endl;
+        }
         sf::Sprite jou;
         jou.setTexture(tex);
         

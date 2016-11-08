@@ -24,6 +24,7 @@
 
 #define  _GNU_SOURCE
 #include <string.h>
+#include <strings.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,6 +32,7 @@
 /* for mkdir and mode_t */
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <dirent.h>
 
 /* libxml[2] headers */
 #include <libxml/parser.h>
@@ -44,9 +46,6 @@
 #define DSO_PREFIX "generate_code_"
 #define DSO_SUFFIX ".so"
 #endif
-
-void debug( int level, char *fmt, ... );
-void debug_setlevel( int newlevel );
 
 #define kind_str(A)   ((A)=='1'?"in":((A)=='2'?"in/out":((A)=='3'?"out":"???")))
 
@@ -196,6 +195,7 @@ struct batch {
     int buildtree;          /* Convert package name to a directory tree */
     int verbose;            /* Verbose mode */
     namelist classes;       /* Selection of classes to generate code for */
+    namelist namespaces;       /* Selection of namespaces to generate code for */
     namelist sqlopts;       /* SQL options */
     int mask;               /* Flag that inverts the above selection */
     char *license;          /* License file */
@@ -225,8 +225,6 @@ void * my_malloc( size_t size );
 umlpackagelist make_package_list( umlpackage * package);
 
 umlclasslist list_classes(umlclasslist current_class, batch *b, int withRef);
-
-char *create_package_dir(const batch *batch, umlpackage *pkg);
 
 extern char *file_ext;       /* Set by switch "-ext". Language specific
                                 default applies when NULL.  */
@@ -318,8 +316,20 @@ int indent_count;
 int indent_open_brace_on_newline;
 int generate_backup;
 
-#ifndef MAXNAMLEN
-#define MAXNAMLEN 256
+
+
+void debug( int level, char *fmt, ... );
+void debug_setlevel( int newlevel );
+
+#ifdef __unix__
+#define ENABLE_FILE_UPDATE_ON_CHANGE
+#else
+#define MAXNAMLEN 1024
+char* strndup (const char *s, size_t n);
 #endif
 
+#ifdef ENABLE_FILE_UPDATE_ON_CHANGE
+void update_file_if_changed(batch *b,char* filename);
+#endif
+    
 #endif
