@@ -7,17 +7,15 @@ namespace state {
   class Element;
 }
 
-#include "Direction.h"
-
 namespace state {
 
   /// class Element - 
   class Element {
     // Attributes
-  protected:
+  public:
     int x;
     int y;
-    Direction orientation;
+  protected:
     int life;
     // Operations
   public:
@@ -28,11 +26,9 @@ namespace state {
     bool equals (const Element& other) const;
     int getX () const;
     int getY () const;
-    Direction getOrientation () const;
     int getLife () const;
     void setX (int x);
     void setY (int y);
-    void setOrientation (Direction o);
     void setLife (int lifenum);
   };
 

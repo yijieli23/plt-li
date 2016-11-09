@@ -59,7 +59,7 @@ void SFMLSurface::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
         target.draw(vertices, states);
     }
-    bool SFMLSurface::load(const std::string& tileset1, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
+bool SFMLSurface::load(const std::string& tileset1, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
     {
         if (!tileset.loadFromFile(tileset1))
             return false;

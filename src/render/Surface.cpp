@@ -9,81 +9,113 @@
 #include <iostream>
 #include <SFML/Window.hpp>
 #include "SFMLSurface.h"
+#include "../state/MobileTypeId.h"
+#include "../state/JoueurTank.h"
+#include <time.h>
+#include <unistd.h>
+#include <ctime>
 
 namespace render{
-      
-   Surface::Surface()
+//     int level[270];
+     state::JoueurTank joueur;
+     render::SFMLSurface map1;
+     int x;
+     int y;
+     int level[15][15]=
+    {
+    {21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21},
+    {21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 21 , 16 , 21},
+    {21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 21 , 16 , 21},
+    {21 , 16 , 21 , 21 , 16 , 21 , 16 , 41 , 16 , 21 , 16 , 140, 21 , 16 , 21 },
+    {21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 110, 16 , 21 },
+    {110, 16 , 21 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 21 , 16 , 21 },
+    {21 , 21 , 21 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 21 , 21 , 21 },
+    {45 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 45 },
+    {21 , 21 , 21 , 21 , 140, 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 },
+    {21 , 21 , 21 , 21 , 21 , 21 , 16 , 18 , 16 , 21 , 21 , 21 , 21 , 21 , 21 },
+    {21 , 41 , 41 , 21 , 21 , 21 , 16 , 21 , 16 , 21 , 21 , 21 , 21 , 41 , 41 },
+    {21 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 21 },
+    {21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 },
+    {21 , 41 , 21 , 21 , 21 , 21 , 17 , 18 , 19 , 21 , 21 , 21 , 21 , 41 , 41 },
+    {21 , 21 , 21 , 21 , 0  , 21 , 17 , 69 , 19 , 21 , 21 , 21 , 21 , 21 , 21 }
+    };      
+    Surface::Surface()
+    {
+
+    }
+    Surface::~Surface()
+    {
+        
+    }
+    void Surface::update()
+    {
+        
+        if (!map1.load("../res/Battle City.png", sf::Vector2u(16, 16),(int*) level, 15, 15))
+        {
+            std::cerr<<"wrong"<<std::endl;
+        }
+    }
+    
+    
+    
+    int Surface::afficher()
     {
         sf::RenderWindow window(sf::VideoMode(272, 240), "Battle");
         window.setPosition(sf::Vector2i(100, 100));
         window.setSize(sf::Vector2u(640, 480));
-        sf::Clock clock;
-         int level[] =
-        {
-//       01 , 02 , 03 , 04 , 05 , 06 , 07 , 08 , 09 , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 17 , 18
-         0 ,  21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 23 , 24 , 21 ,
-         21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 21 , 16 , 21 , 23 , 24 , 21 ,
-         21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 21 , 16 , 21 , 23 , 24 , 21 ,
-         21 , 16 , 21 , 21 , 16 , 21 , 16 , 41 , 16 , 21 , 16 , 140, 21 , 16 , 21 , 48 , 49 , 21 ,
-         21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 110, 16 , 21 , 73 , 74 , 21 ,
-         110, 16 , 21 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 21 , 16 , 21 , 98 , 99 , 21 ,
-         21 , 21 , 21 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 21 , 21 , 21 , 148, 149, 21 ,
-         45 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 45 , 173, 174, 21 ,
-         21 , 21 , 21 , 21 , 140, 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 198, 199, 21 ,
-         21 , 21 , 21 , 21 , 21 , 21 , 16 , 18 , 16 , 21 , 21 , 21 , 21 , 21 , 21 , 23 , 24 , 21 ,
-         21 , 41 , 41 , 21 , 21 , 21 , 16 , 21 , 16 , 21 , 21 , 21 , 21 , 41 , 41 , 23 , 24 , 21 ,
-         21 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 21 , 298, 299, 21 ,
-         21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 323, 324, 21 ,
-         41 , 41 , 21 , 21 , 21 , 21 , 17 , 18 , 19 , 21 , 21 , 21 , 21 , 41 , 41 , 348, 349, 21 ,
-         21 , 21 , 21 , 21 , 21 , 21 , 17 , 69 , 19 , 21 , 21 , 21 , 21 , 21 , 21 , 23 , 24 , 21 ,
-
-        }; 
-        render::SFMLSurface map1;
-        if (!map1.load("../res/Battle City.png", sf::Vector2u(16, 16), level, 18, 16))
-        {
-            std::cout<<"wrong"<<std::endl;
-        }
         
-//        state::JoueurTank joueur(state::JOUEUR);
+    //position de joueur
+        joueur.setX(14);
+        joueur.setY(4);
         
-        sf::Texture tex;
-        if(!tex.loadFromFile("../res/joueur1.png"))
-        {
-            std::cout<<"wrong"<<std::endl;
-        }
-        sf::Sprite jou;
-        jou.setTexture(tex);
         
-   //     engine::DirectionCommand dcommand;
+       
+//        int *level=(int*) level1;
+        
+        
+        update();
+        
+        
+        
+        
         while (window.isOpen())
         {
             
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
            {
-               std::cout<<"left"<<std::endl;
-               
-
+                
+                joueur.moveleft(level);
+                
+                std::cout<<"leftbutton"<<std::endl;
+                update();
            }
-   /*        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            
+            
+           if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
            {
-               std::cout<<"right"<<std::endl;
-               jou.setRotation(90);
-               jou.move(joueur.speed,0);
+               joueur.moveright(level);
+                
+               std::cout<<"rightbutton"<<std::endl;
+               update();
            }
+            
+            
            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
            {
-               std::cout<<"up"<<std::endl;
-               jou.setRotation(360);
-               jou.move(0,-joueur.speed);
+               joueur.moveup(level);
+                
+               std::cout<<"upbutton"<<std::endl;
+               update();
            }
+            
            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
            {
-               std::cout<<"down"<<std::endl;
-               jou.setRotation(180);
-               jou.move(0,joueur.speed);
+               joueur.movedown(level);
+                
+               std::cout<<"downbutton"<<std::endl;
+               update();    
            }
-            */
-          //  dcommand.DirectionJoueur(jou);
+            
             
            sf::Event event;
            while (window.pollEvent(event))
@@ -97,16 +129,10 @@ namespace render{
 
            window.clear();
            window.draw(map1);
-//           window.draw(jou);
            window.display();
            
         }
-
-    
-}
-    Surface::~Surface()
-    {
-        
+        return 0;
     }
-    
+   
 };

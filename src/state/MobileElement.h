@@ -7,8 +7,8 @@ namespace state {
   class Element;
 }
 
-#include "MobileTypeId.h"
 #include "Direction.h"
+#include "MobileTypeId.h"
 #include "Element.h"
 #include "MobileStatus.h"
 
@@ -21,13 +21,15 @@ namespace state {
     state::MobileStatus status;
     state::Direction direction;
     // Attributes
-  protected:
+  public:
     float speed;
+    Direction orientation;
+  protected:
     int position;
     int color;
     // Operations
   public:
-    MobileElement (MobileTypeId mi);
+    MobileElement ();
     bool equals (const Element& other) const;
     bool isStatic () const;
     Direction getDirection () const;
@@ -41,6 +43,11 @@ namespace state {
     void beingattacked ();
     MobileTypeId getMobileTypeId () const;
     void setMobileTypeId (MobileTypeId mi);
+    void moveleft (int level[15][15]);
+    void moveright (int level[15][15]);
+    void moveup (int level[15][15]);
+    void movedown (int level[15][15]);
+    void waite ();
   };
 
 };

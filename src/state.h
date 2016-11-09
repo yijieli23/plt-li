@@ -4,7 +4,6 @@
 
 #include "state/StateObserver.h"
 #include "state/Observable.h"
-#include "state/Direction.h"
 #include "state/Element.h"
 #include "state/AElementAlloc.h"
 #include "state/ElementFactory.h"
@@ -15,6 +14,7 @@
 #include "state/ElementAlloc.h"
 #include "state/StaticElementTypeId.h"
 #include "state/StaticElement.h"
+#include "state/Direction.h"
 #include "state/MobileTypeId.h"
 #include "state/MobileStatus.h"
 #include "state/MobileElement.h"

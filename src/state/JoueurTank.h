@@ -8,7 +8,6 @@ namespace state {
   class MobileElement;
 }
 
-#include "MobileTypeId.h"
 #include "MobileElement.h"
 
 namespace state {
@@ -17,7 +16,7 @@ namespace state {
   class JoueurTank : public state::MobileElement {
     // Operations
   public:
-    JoueurTank (MobileTypeId mi);
+    JoueurTank ();
     bool isJoueurTank ();
     Element* clone () const;
     void addlife (int lifenum);

@@ -20,6 +20,8 @@ namespace render {
     void setSpriteCount (int n);
     void setSpriteLocation (int i, int x, int y);
     void setSpriteTexture (int i, const StaticTile* tex);
+    int afficher ();
+    void update ();
   };
 
 };

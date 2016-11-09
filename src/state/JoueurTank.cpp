@@ -7,7 +7,7 @@
 
 namespace state{
 
-JoueurTank::JoueurTank(MobileTypeId mi): MobileElement(mi)
+JoueurTank::JoueurTank()
 {
      
     life=1;

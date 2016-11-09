@@ -5,7 +5,7 @@
  */
 #include "EnemyTank.h"
 namespace state{
-EnemyTank::EnemyTank(MobileTypeId mi): MobileElement(mi)
+EnemyTank::EnemyTank()
 {
     
 }

@@ -17,12 +17,21 @@ void testSFML() {
 
 using namespace std;
 using namespace state;
-
+int i;
+int j;
+int m=0;
+int level[240];
 
 int main()
 {
-    render::Surface sur;
+    
+    
+    
 
+    render::Surface sur;
+    sur.afficher();
+    sur.~Surface();
+   
     return 0;
 }
 

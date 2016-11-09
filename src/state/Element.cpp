@@ -14,8 +14,7 @@ Element::~Element()
 }
 bool Element::equals(const Element& other) const
 {
-    if((this->x==other.getX())&&(this->y==other.getY())&&
-            (this->orientation==other.getOrientation()))
+    if((this->x==other.getX())&&(this->y==other.getY()))
         return true;
     else return false;
 }
@@ -28,10 +27,7 @@ int Element::getY() const
 {
     return y;
 }
-Direction Element::getOrientation() const
-{
-    return orientation;
-}
+
 int Element::getLife() const
 {
     return life;
@@ -44,10 +40,7 @@ void Element::setY(int y)
 {
     this->y=y;
 }
-void Element::setOrientation(Direction o)
-{
-    orientation=o;
-}
+
 void Element::setLife(int lifenum)
 {
     this->life=lifenum;

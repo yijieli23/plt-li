@@ -37,7 +37,6 @@ namespace engine{
 	state::MobileElement* e = (state::MobileElement*)list.get(idx);
 	if(((e->getX()+dx)>=0) && ((e->getX()+dx)<10)) e->setX(e->getX()+dx);
 	if(((e->getY()+dy)>=0) && ((e->getY()+dy)<15)) e->setY(e->getY()+dy);
-	e->setOrientation(newOrientation);
 	d = (state::MobileElement*)list.get(e->getY() + 15*e->getX());
 	d->setX(s.getGrid().get(idx)->getX());
 	d->setY(s.getGrid().get(idx)->getY());
@@ -53,7 +52,6 @@ namespace engine{
 	state::MobileElement* e = (state::MobileElement*)list.get(idx);
 	e->setX(e->getX()-dx);
 	e->setY(e->getY()-dy);
-	e->setOrientation(prevOrientation);
 	d = (state::MobileElement*)list.get(e->getY() + 15*e->getX());
 	d->setX(s.getGrid().get(idx)->getX());
 	d->setY(s.getGrid().get(idx)->getY());
