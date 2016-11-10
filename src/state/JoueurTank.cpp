@@ -7,9 +7,10 @@
 
 namespace state{
 
-JoueurTank::JoueurTank()
+JoueurTank::JoueurTank(int x,int y)
 {
-     
+    this->x=x;
+    this->y=y;
     life=1;
     speed=0.1;
 }
@@ -26,5 +27,6 @@ void JoueurTank::addlife(int lifenum)
 {
     this->life+=lifenum;
 }
+
 
 };

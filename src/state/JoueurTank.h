@@ -16,7 +16,7 @@ namespace state {
   class JoueurTank : public state::MobileElement {
     // Operations
   public:
-    JoueurTank ();
+    JoueurTank (int x, int y);
     bool isJoueurTank ();
     Element* clone () const;
     void addlife (int lifenum);

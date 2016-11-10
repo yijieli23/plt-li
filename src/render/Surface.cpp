@@ -14,13 +14,13 @@
 #include <time.h>
 #include <unistd.h>
 #include <ctime>
-
+#include "../engine/DirectionCommand.h"
 namespace render{
 //     int level[270];
-     state::JoueurTank joueur;
+//     state::JoueurTank joueur;
+     engine::DirectionCommand movecommand;
      render::SFMLSurface map1;
-     int x;
-     int y;
+     
      int level[15][15]=
     {
     {21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21},
@@ -38,7 +38,7 @@ namespace render{
     {21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 },
     {21 , 41 , 21 , 21 , 21 , 21 , 17 , 18 , 19 , 21 , 21 , 21 , 21 , 41 , 41 },
     {21 , 21 , 21 , 21 , 0  , 21 , 17 , 69 , 19 , 21 , 21 , 21 , 21 , 21 , 21 }
-    };      
+    };
     Surface::Surface()
     {
 
@@ -55,67 +55,21 @@ namespace render{
             std::cerr<<"wrong"<<std::endl;
         }
     }
-    
-    
-    
+   
     int Surface::afficher()
     {
         sf::RenderWindow window(sf::VideoMode(272, 240), "Battle");
         window.setPosition(sf::Vector2i(100, 100));
-        window.setSize(sf::Vector2u(640, 480));
-        
-    //position de joueur
-        joueur.setX(14);
-        joueur.setY(4);
-        
-        
-       
+        window.setSize(sf::Vector2u(640, 480));     
 //        int *level=(int*) level1;
-        
-        
+       
         update();
-        
-        
-        
-        
+ 
         while (window.isOpen())
         {
-            
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-           {
-                
-                joueur.moveleft(level);
-                
-                std::cout<<"leftbutton"<<std::endl;
-                update();
-           }
-            
-            
-           if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-           {
-               joueur.moveright(level);
-                
-               std::cout<<"rightbutton"<<std::endl;
-               update();
-           }
-            
-            
-           if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-           {
-               joueur.moveup(level);
-                
-               std::cout<<"upbutton"<<std::endl;
-               update();
-           }
-            
-           if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-           {
-               joueur.movedown(level);
-                
-               std::cout<<"downbutton"<<std::endl;
-               update();    
-           }
-            
+           movecommand.move(level);
+           
+           update();
             
            sf::Event event;
            while (window.pollEvent(event))
@@ -123,10 +77,6 @@ namespace render{
                if(event.type == sf::Event::Closed)
                    window.close();
            }
-           
-           
-           
-
            window.clear();
            window.draw(map1);
            window.display();

@@ -21,12 +21,13 @@ namespace engine {
     state::Direction direction;
     // Operations
   public:
-    DirectionCommand (int c, state::Direction d);
+    DirectionCommand ();
     CommandTypeId getTypeId () const;
     int getCharacter () const;
     state::Direction getDirection () const;
     void setCharacter (int character);
     void setDirection (state::Direction direction);
+    void move (int level[15][15]);
   };
 
 };
