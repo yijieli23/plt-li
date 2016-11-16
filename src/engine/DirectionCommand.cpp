@@ -7,17 +7,18 @@
 #include "DirectionCommand.h"
 #include "state/Direction.h"
 #include "render/Surface.h"
+#include "state/State.h"
 #include "../state/MobileTypeId.h"
 #include "../state/JoueurTank.h"
-#include <SFML/Graphics.hpp>
 #include <iostream>
-#include <SFML/Window.hpp>
+
+using namespace state;
+
 namespace engine{
-    state::JoueurTank joueur(14,4);
     
-    DirectionCommand::DirectionCommand()
+    DirectionCommand::DirectionCommand(state::Direction id) : direction(id)
 {
-	//id = DIRECTION;
+
 }
     CommandTypeId DirectionCommand::getTypeId() const
     {
@@ -31,41 +32,27 @@ namespace engine{
     {
         return direction;
     }
-    void DirectionCommand::move(int level[15][15])
+    void DirectionCommand::run(State& state)
     {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-           {
-                
+        JoueurTank& joueur = state.getJoueurTank();
+        auto level = state.getLevel();
+        switch(direction)
+        {
+            case(state::NONE):
+                break;
+            case(state::WEST):
                 joueur.moveleft(level);
-                
-                std::cout<<"leftbutton"<<std::endl;
-                
-           }
-            
-            
-           if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-           {
-               joueur.moveright(level);
-                
-               std::cout<<"rightbutton"<<std::endl;
-               
-           }
-            
-            
-           if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-           {
-               joueur.moveup(level);
-                
-               std::cout<<"upbutton"<<std::endl;
-               
-           }
-            
-           if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-           {
-               joueur.movedown(level);
-                
-               std::cout<<"downbutton"<<std::endl;
-                   
-           }
-    }
+                break;
+            case(state::EAST):
+                joueur.moveright(level);
+                break;
+            case(state::NORTH):
+                joueur.moveup(level);
+                break;
+            case(state::SOUTH):
+                joueur.movedown(level);
+                break;
+           
+        }
+   }
 };

@@ -2,6 +2,7 @@
 #ifndef STATE__ENEMYTANK__H
 #define STATE__ENEMYTANK__H
 
+#include <vector>
 
 namespace state {
   class Element;
@@ -16,10 +17,11 @@ namespace state {
   class EnemyTank : public state::MobileElement {
     // Operations
   public:
-    EnemyTank ();
+    EnemyTank (int x, int y);
     bool isEnemyTank () const;
     Element* clone () const;
     void setColor (int c);
+    void init (std::vector<int>& level);
   };
 
 };

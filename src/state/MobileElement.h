@@ -43,11 +43,6 @@ namespace state {
     void beingattacked ();
     MobileTypeId getMobileTypeId () const;
     void setMobileTypeId (MobileTypeId mi);
-    void moveleft (int level[15][15]);
-    void moveright (int level[15][15]);
-    void moveup (int level[15][15]);
-    void movedown (int level[15][15]);
-    void waite ();
   };
 
 };

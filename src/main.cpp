@@ -24,13 +24,8 @@ int level[240];
 
 int main()
 {
-    
-    
-    
-
     render::Surface sur;
     sur.afficher();
-    sur.~Surface();
    
     return 0;
 }

@@ -2,10 +2,13 @@
 #ifndef STATE__STATE__H
 #define STATE__STATE__H
 
+#include <vector>
 
 namespace state {
   class ElementList;
   class ElementGrid;
+  class JoueurTank;
+  class EnemyTank;
   class State;
   class MobileElement;
   class ElementFactory;
@@ -15,6 +18,8 @@ namespace state {
 
 #include "ElementList.h"
 #include "ElementGrid.h"
+#include "JoueurTank.h"
+#include "EnemyTank.h"
 #include "StateEventId.h"
 #include "Observable.h"
 
@@ -29,6 +34,9 @@ namespace state {
     ElementGrid grid;
     /// 		
     int epoch;
+    JoueurTank joueur;
+    std::vector<int> level;
+    std::vector<EnemyTank> ets;
     // Operations
   public:
     State ();
@@ -53,6 +61,9 @@ namespace state {
     /// 	
     /// @param e		(???) 
     void notifyObservers (const StateEvent& e) const;
+    JoueurTank& getJoueurTank ();
+    std::vector<int>& getLevel ();
+    void levelinit ();
   };
 
 };

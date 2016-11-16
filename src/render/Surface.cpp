@@ -11,78 +11,91 @@
 #include "SFMLSurface.h"
 #include "../state/MobileTypeId.h"
 #include "../state/JoueurTank.h"
+#include "../state/EnemyTank.h"
+#include <vector>
 #include <time.h>
 #include <unistd.h>
 #include <ctime>
 #include "../engine/DirectionCommand.h"
-namespace render{
-//     int level[270];
-//     state::JoueurTank joueur;
-     engine::DirectionCommand movecommand;
-     render::SFMLSurface map1;
-     
-     int level[15][15]=
-    {
-    {21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21},
-    {21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 21 , 16 , 21},
-    {21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 21 , 16 , 21},
-    {21 , 16 , 21 , 21 , 16 , 21 , 16 , 41 , 16 , 21 , 16 , 140, 21 , 16 , 21 },
-    {21 , 16 , 21 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 16 , 21 , 110, 16 , 21 },
-    {110, 16 , 21 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 21 , 16 , 21 },
-    {21 , 21 , 21 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 21 , 21 , 21 },
-    {45 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 45 },
-    {21 , 21 , 21 , 21 , 140, 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 },
-    {21 , 21 , 21 , 21 , 21 , 21 , 16 , 18 , 16 , 21 , 21 , 21 , 21 , 21 , 21 },
-    {21 , 41 , 41 , 21 , 21 , 21 , 16 , 21 , 16 , 21 , 21 , 21 , 21 , 41 , 41 },
-    {21 , 21 , 21 , 21 , 21 , 21 , 16 , 21 , 16 , 21 , 21 , 21 , 21 , 21 , 21 },
-    {21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 , 21 },
-    {21 , 41 , 21 , 21 , 21 , 21 , 17 , 18 , 19 , 21 , 21 , 21 , 21 , 41 , 41 },
-    {21 , 21 , 21 , 21 , 0  , 21 , 17 , 69 , 19 , 21 , 21 , 21 , 21 , 21 , 21 }
-    };
-    Surface::Surface()
-    {
+#include "engine/Engine.h"
+using namespace std;
+namespace render {
+    
+    render::SFMLSurface map1;
+
+
+
+    
+//    engine::DirectionCommand movecommand(state::NONE, level);
+    engine::Engine engine1;
+    state::State state1;
+
+    Surface::Surface() {
 
     }
-    Surface::~Surface()
-    {
-        
+
+    Surface::~Surface() {
+
     }
-    void Surface::update()
-    {
-        
-        if (!map1.load("../res/Battle City.png", sf::Vector2u(16, 16),(int*) level, 15, 15))
-        {
-            std::cerr<<"wrong"<<std::endl;
+
+    void Surface::update() {
+
+        if (!map1.load("res/Battle City.png", sf::Vector2u(16, 16), state1.getLevel(), 15, 15)) {
+            std::cerr << "wrong" << std::endl;
         }
     }
-   
-    int Surface::afficher()
-    {
-        sf::RenderWindow window(sf::VideoMode(272, 240), "Battle");
-        window.setPosition(sf::Vector2i(100, 100));
-        window.setSize(sf::Vector2u(640, 480));     
-//        int *level=(int*) level1;
-       
+
+    int Surface::afficher() {
+        sf::RenderWindow window(sf::VideoMode(240, 240), "Battle");
+        window.setPosition(sf::Vector2i(400, 100));
+        window.setSize(sf::Vector2u(576, 480));
+
+
+        //        int *level=(int*) level1;
+                    
+
+        
         update();
- 
-        while (window.isOpen())
-        {
-           movecommand.move(level);
-           
-           update();
+        
+        while (window.isOpen()) {
             
-           sf::Event event;
-           while (window.pollEvent(event))
-           {
-               if(event.type == sf::Event::Closed)
-                   window.close();
-           }
-           window.clear();
-           window.draw(map1);
-           window.display();
+
+            //   movecommand.move(level);
+            //   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+               
+
+            sf::Event event;
+            while (window.pollEvent(event)) {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+                else if (event.type == sf::Event::KeyPressed) {
+                    if (event.key.code == sf::Keyboard::Left)
+                    {
+                        std::cout << "left" << std::endl;
+                        engine1.addCommand(new engine::DirectionCommand(state::WEST));
+                    }
+                    else if (event.key.code == sf::Keyboard::Right)
+                        engine1.addCommand(new engine::DirectionCommand(state::EAST));
+
+
+                    else if (event.key.code == sf::Keyboard::Up)
+                        engine1.addCommand(new engine::DirectionCommand(state::NORTH));
+
+                    else if (event.key.code == sf::Keyboard::Down)
+                        engine1.addCommand(new engine::DirectionCommand(state::SOUTH));
+                }
+
+            }
+            //       engine.add(new DirectionCommand(rand()%4));
            
+            engine1.update();
+            
+            window.clear();
+            window.draw(map1);
+            window.display();
+
         }
         return 0;
     }
-   
+
 };

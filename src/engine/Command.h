@@ -3,6 +3,10 @@
 #define ENGINE__COMMAND__H
 
 
+namespace state {
+  class State;
+}
+
 #include "CommandTypeId.h"
 
 namespace engine {
@@ -13,6 +17,7 @@ namespace engine {
   public:
     virtual ~Command ();
     virtual CommandTypeId getTypeId () const = 0;
+    virtual void run (state::State& state) = 0;
   };
 
 };

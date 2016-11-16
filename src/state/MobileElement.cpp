@@ -6,7 +6,7 @@
 #include "MobileElement.h"
 
 
-#include <unistd.h>
+
 namespace state{
     
 MobileElement::MobileElement()
@@ -69,37 +69,6 @@ void MobileElement::setMobileTypeId(MobileTypeId mi)
 {
     mobileId=mi;
 }
-void MobileElement::waite()
-{
-    usleep(200000);
-}
-void MobileElement::moveleft(int level[15][15])
-{
-    level[this->x][this->y]=21;
-    this->y=this->y-1;
-    level[this->x][this->y]=2;
-    waite();
-}
-void MobileElement::moveright(int level[15][15])
-{
-    level[this->x][this->y]=21;
-    this->y=this->y+1;
-    level[this->x][this->y]=6;
-    waite();
-}
-void MobileElement::moveup(int level[15][15])
-{
-    level[this->x][this->y]=21;
-    this->x=this->x-1;
-    level[this->x][this->y]=0;
-    waite();
-}
-void MobileElement::movedown(int level[15][15])
-{
-    level[this->x][this->y]=21;
-    this->x=this->x+1;
-    level[this->x][this->y]=4;
-    waite();
-}
+
 
 };

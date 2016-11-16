@@ -21,7 +21,7 @@ namespace engine{
     {
         
     }
-    Ruler::Ruler(ActionList& a, const state::State& s, const CommandSet& cs) : actions(a), currentState(s), commands(cs)
+    Ruler::Ruler(ActionList& a, const state::State& s, const CommandSet& cs) : currentState(s), commands(cs),  actions(a)
     {
     }
 

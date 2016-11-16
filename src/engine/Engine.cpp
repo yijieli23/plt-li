@@ -5,6 +5,8 @@
  */
 
 #include "Engine.h"
+#include "../state/State.h"
+using namespace state;
 namespace engine{
     
     Engine::Engine() : record(currentState)
@@ -49,38 +51,12 @@ std::mutex& Engine::getUpdateMutex () const
 
 void Engine::update()
 {
-	//~ swapCommands();
-	ActionList* al;
-	Ruler* ruler;
-	//State newState;
-	switch(mode)
-	{
-		case(PLAY):			
-			//newState.copy(currentState);
-			al = new ActionList(currentState,false);
-			ruler = new Ruler(*al,currentState,*currentCommands);
-			ruler->apply();
-			ruler->collisions();
-//			record.recordOne(al);
-			delete ruler;
-			delete al;
-			break;
-		case(RECORD):
-//			record.startRecord();
-			break;
-		case(REPLAY):
-//			record.startReplay();
-			break;
-		case(ROLLBACK):
-//			record.startRollback();
-			break;
-		case(PAUSE):
-//			record.stopRecord();
-			break;
-		case(CLOSE):
-//			record.clear();
-			break;
-	}
+        
+        for(size_t i=0;i<currentCommands->size();i++) {
+            currentCommands->get(i)->run(currentState);
+        }
+        currentCommands->clear();
+	
 }
 
 void Engine::swapCommands ()

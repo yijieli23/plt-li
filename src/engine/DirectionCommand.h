@@ -3,6 +3,9 @@
 #define ENGINE__DIRECTIONCOMMAND__H
 
 
+namespace state {
+  class State;
+};
 namespace engine {
   class Command;
 }
@@ -21,13 +24,13 @@ namespace engine {
     state::Direction direction;
     // Operations
   public:
-    DirectionCommand ();
+    DirectionCommand (state::Direction id);
     CommandTypeId getTypeId () const;
     int getCharacter () const;
     state::Direction getDirection () const;
     void setCharacter (int character);
     void setDirection (state::Direction direction);
-    void move (int level[15][15]);
+    void run (state::State& state);
   };
 
 };

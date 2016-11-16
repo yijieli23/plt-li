@@ -8,7 +8,7 @@
 
 
 namespace render{
-    TileSetChars::TileSetChars() : file_name("../res/Battle City.png"), cellWidth(16), cellHeight(16)
+    TileSetChars::TileSetChars() : file_name("res/Battle City.png"), cellWidth(16), cellHeight(16)
 {
 	tiles.push_back(new StaticTile(304,0)); 
 	tiles.push_back(new StaticTile(16,0)); 

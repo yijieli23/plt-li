@@ -27,6 +27,7 @@ namespace engine {
     Command* get (int category) const;
     void set (Command* cmd);
     void take (CommandSet& commands, bool replace);
+    void clear ();
   };
 
 };

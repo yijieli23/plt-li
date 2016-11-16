@@ -7,7 +7,7 @@
 #include "TileSetGrid.h"
 
 namespace render{
-    TileSetGrid::TileSetGrid() : file_name("../res/Battle city.png"), cellWidth(16), cellHeight(16)
+    TileSetGrid::TileSetGrid() : file_name("res/Battle city.png"), cellWidth(16), cellHeight(16)
 {
 	tiles.push_back(new StaticTile(16,112)); //GROUND
 	tiles.push_back(new StaticTile(128,112)); //SEA
