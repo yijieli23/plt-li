@@ -3,6 +3,15 @@
 #define AI__AI__H
 
 
+namespace state {
+  class State;
+};
+namespace engine {
+  class CommandSet;
+}
+
+#include "state/State.h"
+
 namespace ai {
 
   /// class AI - 

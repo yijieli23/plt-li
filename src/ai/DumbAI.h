@@ -3,11 +3,18 @@
 #define AI__DUMBAI__H
 
 
+namespace state {
+  class State;
+};
+namespace engine {
+  class CommandSet;
+};
 namespace ai {
   class AI;
 }
 
 #include "AI.h"
+#include "engine/CommandSet.h"
 
 namespace ai {
 

@@ -7,6 +7,7 @@
 #include "engine/CommandSet.h"
 #include "engine/DirectionCommand.h"
 #include "state/State.h"
+#include <iostream>
 
 namespace ai{
     DumbAI::DumbAI(const state::State& mainState) : AI(mainState)
