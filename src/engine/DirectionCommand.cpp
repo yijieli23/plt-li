@@ -18,7 +18,27 @@ namespace engine{
     
     DirectionCommand::DirectionCommand(state::Direction id) : direction(id)
 {
-
+/*        State& state;
+        JoueurTank& joueur = state.getJoueurTank();
+        auto level = state.getLevel();
+        switch(direction)
+        {
+            case(state::NONE):
+                break;
+            case(state::WEST):
+                joueur.moveleft(level);
+                break;
+            case(state::EAST):
+                joueur.moveright(level);
+                break;
+            case(state::NORTH):
+                joueur.moveup(level);
+                break;
+            case(state::SOUTH):
+                joueur.movedown(level);
+                break;
+           
+        }*/
 }
     CommandTypeId DirectionCommand::getTypeId() const
     {

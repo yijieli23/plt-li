@@ -29,7 +29,7 @@ namespace render {
 //    engine::DirectionCommand movecommand(state::NONE, level);
     engine::Engine engine1;
     state::State state1;
-
+    engine::DirectionCommand direction1(state::NONE);
     Surface::Surface() {
 
     }
@@ -59,35 +59,47 @@ namespace render {
         
         while (window.isOpen()) {
             
-
             //   movecommand.move(level);
             //   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-               
-
+            
             sf::Event event;
             while (window.pollEvent(event)) {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-                else if (event.type == sf::Event::KeyPressed) {
-                    if (event.key.code == sf::Keyboard::Left)
+            switch(event.type)
+            {
+                    case sf::Event::Closed:
+                        window.close();
+                        break;
+                    case sf::Event::KeyPressed :
+                    switch(event.key.code)
                     {
+                        case sf::Keyboard::Left:
                         std::cout << "left" << std::endl;
                         engine1.addCommand(new engine::DirectionCommand(state::WEST));
-                    }
-                    else if (event.key.code == sf::Keyboard::Right)
+                        break;
+                    
+                        case sf::Keyboard::Right:
                         engine1.addCommand(new engine::DirectionCommand(state::EAST));
-
-
-                    else if (event.key.code == sf::Keyboard::Up)
+                        break;
+                        
+                        case sf::Keyboard::Up:
                         engine1.addCommand(new engine::DirectionCommand(state::NORTH));
-
-                    else if (event.key.code == sf::Keyboard::Down)
+                        break;
+                        
+                        case sf::Keyboard::Down:
                         engine1.addCommand(new engine::DirectionCommand(state::SOUTH));
-                }
-
+                        break;
+                        
+                        default:
+                            break;
+                    }
+                default:
+                    break;    
             }
+        }
+            
+            engine1.addCommand(new engine::DirectionCommand(state::Direction(rand()%4+1)));
             //       engine.add(new DirectionCommand(rand()%4));
-           
+            direction1.run(state1);
             engine1.update();
             
             window.clear();
@@ -96,6 +108,7 @@ namespace render {
 
         }
         return 0;
-    }
+    
+}
 
 };

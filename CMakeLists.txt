@@ -23,6 +23,7 @@ set(DIA2CODE "${PROJECT_SOURCE_DIR}/dia2code/bin/dia2code")
 exec_program(${DIA2CODE} ARGS -d ../src -ns state -t cpp ../src/state.dia)
 exec_program(${DIA2CODE} ARGS -d ../src -ns render -t cpp ../src/render.dia)
 exec_program(${DIA2CODE} ARGS -d ../src -ns engine -t cpp ../src/engine.dia)
+exec_program(${DIA2CODE} ARGS -d ../src -ns ai -t cpp ../src/ai.dia)
 
 # Sources
 file(GLOB_RECURSE main_sources src/*.cpp)
