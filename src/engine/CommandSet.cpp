@@ -34,9 +34,7 @@ namespace engine{
         for(int i=0;i<commands.size();i++)
             delete commands[i];
         commands.clear();
-        
-            
-        
+           
     }
     
     

@@ -24,12 +24,10 @@ namespace render {
     render::SFMLSurface map1;
 
 
-
+state::State state1;
     
 //    engine::DirectionCommand movecommand(state::NONE, level);
-    engine::Engine engine1;
-    state::State state1;
-    engine::DirectionCommand direction1(state::NONE);
+
     Surface::Surface() {
 
     }
@@ -53,7 +51,9 @@ namespace render {
 
         //        int *level=(int*) level1;
                     
-
+    engine::Engine engine1;
+    
+    engine::DirectionCommand direction1(state::NONE);
         
         update();
         
@@ -95,17 +95,19 @@ namespace render {
                 default:
                     break;    
             }
-        }
+      //      engine1.addCommand(new engine::DirectionCommand(state::Direction(rand()%4+1)));
+       //     engine1.addCommand(new engine::DirectionCommand(state::Direction(rand()%4+1)));
+           
             
-            engine1.addCommand(new engine::DirectionCommand(state::Direction(rand()%4+1)));
-            //       engine.add(new DirectionCommand(rand()%4));
-            direction1.run(state1);
+        }
             engine1.update();
+            update();
+            //       engine.add(new DirectionCommand(rand()%4));
             
             window.clear();
             window.draw(map1);
             window.display();
-
+            
         }
         return 0;
     

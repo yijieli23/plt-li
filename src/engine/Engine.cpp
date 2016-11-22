@@ -6,12 +6,13 @@
 
 #include "Engine.h"
 #include "../state/State.h"
+#include "../state/Direction.h"
 using namespace state;
 namespace engine{
     
     Engine::Engine() : record(currentState)
 {
-
+        currentCommands=new CommandSet();
 }
 
 Engine::~Engine()

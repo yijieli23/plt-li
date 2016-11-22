@@ -42,13 +42,12 @@ void JoueurTank::moveleft(std::vector<int>& level)
     this->orientation=EAST;
     level[this->x*15+this->y]=2;
     if(this->y-1>=0)
-    {    
+    {
         if(level[this->x*15+this->y-1]==21)
         {
             level[this->x*15+this->y]=21;
             this->y=this->y-1;
             level[this->x*15+this->y]=2;
-            wait();
         }
     }
 }
@@ -65,7 +64,7 @@ void JoueurTank::moveright(std::vector<int>& level)
             level[this->x*15+this->y]=6;
         }
     }
-    wait();
+    
 }
 void JoueurTank::moveup(std::vector<int>& level)
 {
@@ -77,7 +76,7 @@ void JoueurTank::moveup(std::vector<int>& level)
         this->x=this->x-1;
         level[this->x*15+this->y]=0;
     }
-    wait();
+    
 }
 void JoueurTank::movedown(std::vector<int>& level)
 {
@@ -89,7 +88,7 @@ void JoueurTank::movedown(std::vector<int>& level)
         this->x=this->x+1;
         level[this->x*15+this->y]=4;
     }
-    wait();
+    
 }
 
 };
