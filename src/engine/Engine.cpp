@@ -57,7 +57,7 @@ void Engine::update()
             currentCommands->get(i)->run(currentState);
         }
         currentCommands->clear();
-	
+ 	
 }
 
 void Engine::swapCommands ()

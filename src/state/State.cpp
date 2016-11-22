@@ -135,6 +135,10 @@ std::vector<int>& State::getLevel ()
 {
     return level;
 }
+const std::vector<int>& State::getLevel () const
+{
+    return level;
+}
 void State::levelinit()
 {
     

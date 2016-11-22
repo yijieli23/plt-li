@@ -34,7 +34,7 @@ namespace render {
     void setSpriteLocation (int i, int x, int y);
     void setSpriteTexture (int i, const StaticTile* tex);
     void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-    bool load (const std::string& tileset, sf::Vector2u tileSize, std::vector<int>& tiles, unsigned int width, unsigned int height);
+    bool load (const std::string& tileset, sf::Vector2u tileSize, const std::vector<int>& tiles, unsigned int width, unsigned int height);
   };
 
 };

@@ -62,6 +62,7 @@ namespace state {
     /// @param e		(???) 
     void notifyObservers (const StateEvent& e) const;
     JoueurTank& getJoueurTank ();
+    const std::vector<int>& getLevel () const;
     std::vector<int>& getLevel ();
     void levelinit ();
   };

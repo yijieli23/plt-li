@@ -5,6 +5,7 @@
  */
 #include "JoueurTank.h"
 #include <unistd.h>
+#include <iostream>
 namespace state{
 
 JoueurTank::JoueurTank()
