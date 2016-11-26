@@ -2,6 +2,7 @@
 #ifndef STATE__HOUSE__H
 #define STATE__HOUSE__H
 
+#include <vector>
 
 namespace state {
   class Element;
@@ -19,6 +20,7 @@ namespace state {
     House ();
     Element* clone () const;
     void beingattacked ();
+    void init (std::vector<int>& level);
   };
 
 };

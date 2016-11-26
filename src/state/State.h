@@ -36,7 +36,7 @@ namespace state {
     int epoch;
     JoueurTank joueur;
     std::vector<int> level;
-    std::vector<EnemyTank> ets;
+    EnemyTank et1;
     // Operations
   public:
     State ();
@@ -65,6 +65,7 @@ namespace state {
     const std::vector<int>& getLevel () const;
     std::vector<int>& getLevel ();
     void levelinit ();
+    EnemyTank& getEnemyTank ();
   };
 
 };

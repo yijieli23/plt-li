@@ -7,9 +7,11 @@
 #include "Wood.h"
 namespace state{
 
-Wood::Wood()
+Wood::Wood(int x,int y)
 {
-    
+    this->x=x;
+    this->y=y;
+    life=1;
 }
 Element* Wood::clone() const
 {
@@ -19,4 +21,10 @@ void Wood::beingattacked()
 {
     this->life--;
 }
+
+void Wood::init(std::vector<int>& level)
+{
+    level[this->x*15+this->y]=16;
+}
+
 };

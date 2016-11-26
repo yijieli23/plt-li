@@ -18,6 +18,8 @@
 #include <ctime>
 #include "../engine/DirectionCommand.h"
 #include "engine/Engine.h"
+#include "../ai/DumbAI.h"
+#include "engine/DirectionCommandEnemy.h"
 using namespace std;
 namespace render {
     
@@ -44,10 +46,10 @@ namespace render {
         
 
         //        int *level=(int*) level1;
-                    
+    
     engine::Engine engine1;
         const state::State& state1 = engine1.getState();
-    
+        ai::DumbAI ai1(state1);
     engine::DirectionCommand direction1(state::NONE);
         
         render::SFMLSurface map1;
@@ -55,7 +57,7 @@ namespace render {
             std::cerr << "wrong" << std::endl;
         }
  
-    
+    int flag=0;
         while (window.isOpen()) {
             
             //   movecommand.move(level);
@@ -69,6 +71,8 @@ namespace render {
                         window.close();
                         break;
                     case sf::Event::KeyPressed :
+                    {
+                        
                     switch(event.key.code)
                     {
                         case sf::Keyboard::Left:
@@ -94,15 +98,19 @@ namespace render {
                         default:
                             break;
                     }
+                    if(flag%3==0)
+                        engine1.addCommand(new engine::DirectionCommandEnemy(state::SOUTH));
+                    else
+                        engine1.addCommand(new engine::DirectionCommandEnemy(state::Direction(rand()%4+1)));
+                    flag++;
+                    }
                 default:
                     break;    
             }
-      //      engine1.addCommand(new engine::DirectionCommand(state::Direction(rand()%4+1)));
-       //     engine1.addCommand(new engine::DirectionCommand(state::Direction(rand()%4+1)));
-           
-            
+                
+    
         }
-            
+         
             
             engine1.update();
         

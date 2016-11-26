@@ -22,6 +22,10 @@ namespace state {
     Element* clone () const;
     void setColor (int c);
     void init (std::vector<int>& level);
+    void moveleft (std::vector<int>& level);
+    void moveright (std::vector<int>& level);
+    void moveup (std::vector<int>& level);
+    void movedown (std::vector<int>& level);
   };
 
 };

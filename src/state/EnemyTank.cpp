@@ -30,4 +30,59 @@ void EnemyTank::setColor(int c)
 {
     this->color=c;
 }
+
+void EnemyTank::moveleft(std::vector<int>& level)
+{
+    this->orientation=EAST;
+    level[this->x*15+this->y]=110;
+    if(this->y-1>=0) 
+    {
+        if(level[this->x*15+this->y-1]==21)
+        {
+            level[this->x*15+this->y]=21;
+            this->y=this->y-1;
+            level[this->x*15+this->y]=110;
+        }
+    }
+}
+void EnemyTank::moveright(std::vector<int>& level)
+{
+    this->orientation=WEST;
+    level[this->x*15+this->y]=114;
+        if(this->y+1<=14)
+    {
+        if(level[this->x*15+this->y+1]==21)
+        {
+            level[this->x*15+this->y]=21;
+            this->y=this->y+1;
+            level[this->x*15+this->y]=114;
+        }
+    }
+    
+}
+void EnemyTank::moveup(std::vector<int>& level)
+{
+    this->orientation=NORTH;
+    level[this->x*15+this->y]=108;
+    if(level[(this->x-1)*15+this->y]==21)
+    {
+        level[this->x*15+this->y]=21;
+        this->x=this->x-1;
+        level[this->x*15+this->y]=108;
+    }
+    
+}
+void EnemyTank::movedown(std::vector<int>& level)
+{
+    this->orientation=SOUTH;
+    level[this->x*15+this->y]=112;
+    if(level[(this->x+1)*15+this->y]==21)
+    {
+        level[this->x*15+this->y]=21;
+        this->x=this->x+1;
+        level[this->x*15+this->y]=112;
+    }
+    
+}
+
 };

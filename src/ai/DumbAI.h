@@ -3,11 +3,11 @@
 #define AI__DUMBAI__H
 
 
-namespace state {
-  class State;
-};
 namespace engine {
   class CommandSet;
+};
+namespace state {
+  class State;
 };
 namespace ai {
   class AI;
@@ -22,10 +22,9 @@ namespace ai {
   class DumbAI : public ai::AI {
     // Operations
   public:
+    void dumbMove (int idx, engine::CommandSet& commands);
     DumbAI (const state::State& mainState);
     void run (engine::CommandSet& commands);
-  protected:
-    void dumbMove (int idx, engine::CommandSet& commands);
   };
 
 };

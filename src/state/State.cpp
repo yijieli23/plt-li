@@ -7,27 +7,45 @@
 #include "State.h"
 #include <fstream>
 #include <vector>
+#include "House.h"
+#include "Wood.h"
 namespace state{
     
    
-    
-State::State(): chars(*this), grid(*this), level(15*15)
+State::State(): chars(*this), grid(*this), level(15*15), et1(0,0)
 {
     epoch=0;
     for(int i=0;i<level.size();i++)
         level[i]=21;
+    
     joueur.init(level);
     
-  
-    EnemyTank et1(0, 0);
+    
     et1.init(level);
-    ets.push_back(et1);
-    EnemyTank et2(0, 7);
+//   ets.push_back(et1);
+/*    EnemyTank et2(0, 7);
     et2.init(level);
     ets.push_back(et2);
     EnemyTank et3(0, 14);
     et3.init(level);
     ets.push_back(et3);
+ */ 
+    
+    House house;
+    house.init(level);
+    
+    Wood wood1(14,6);
+    wood1.init(level);
+    Wood wood2(13,6);
+    wood2.init(level);
+    Wood wood3(13,7);
+    wood3.init(level);
+    Wood wood4(13,8);
+    wood4.init(level);
+    Wood wood5(14,8);
+    wood5.init(level);
+    
+    
 }
 
 State::~State()
@@ -144,4 +162,8 @@ void State::levelinit()
     
 }
 
+EnemyTank& State::getEnemyTank ()
+{
+    return et1;
+}
 };

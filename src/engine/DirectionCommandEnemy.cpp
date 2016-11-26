@@ -3,38 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-#include "DirectionCommand.h"
+#include "DirectionCommandEnemy.h"
 #include "state/Direction.h"
 #include "render/Surface.h"
 #include "state/State.h"
 #include "../state/MobileTypeId.h"
-#include "../state/JoueurTank.h"
+#include "../state/EnemyTank.h"
 #include <iostream>
 
 using namespace state;
 
 namespace engine{
     
-    DirectionCommand::DirectionCommand(state::Direction id) : direction(id)
-{
+    DirectionCommandEnemy::DirectionCommandEnemy(state::Direction id) : direction(id)
+    {
 
-}
-    CommandTypeId DirectionCommand::getTypeId() const
+    }
+    CommandTypeId DirectionCommandEnemy::getTypeId() const
     {
  //       return id;
     }
-    int DirectionCommand::getCharacter() const
+    int DirectionCommandEnemy::getCharacter() const
     {
         return character;
     }
-    state::Direction DirectionCommand::getDirection() const
+    state::Direction DirectionCommandEnemy::getDirection() const
     {
         return direction;
     }
-    void DirectionCommand::run(State& state)
+    void DirectionCommandEnemy::run(State& state)
     {
-        JoueurTank& joueur = state.getJoueurTank();
+        EnemyTank& enemy = state.getEnemyTank();
         auto& level = state.getLevel();
         switch(direction)
         {
@@ -42,21 +41,21 @@ namespace engine{
                 break;
                 
             case(state::WEST):
-                joueur.moveleft(level);
+                enemy.moveleft(level);
                 break;
                 
             case(state::EAST):
-                joueur.moveright(level);
+                enemy.moveright(level);
                 break;
                 
             case(state::NORTH):
-                joueur.moveup(level);
+                enemy.moveup(level);
                 break;
                 
             case(state::SOUTH):
-                joueur.movedown(level);
+                enemy.movedown(level);
                 break;
         }
-        std::cout<<"x"<<joueur.x<<" y"<<joueur.y<<std::endl;
+        std::cout<<"x"<<enemy.x<<" y"<<enemy.y<<std::endl;
    }
 };

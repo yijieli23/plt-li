@@ -2,6 +2,7 @@
 #ifndef STATE__WOOD__H
 #define STATE__WOOD__H
 
+#include <vector>
 
 namespace state {
   class Element;
@@ -16,9 +17,10 @@ namespace state {
   class Wood : public state::StaticElement {
     // Operations
   public:
-    Wood ();
+    Wood (int x, int y);
     Element* clone () const;
     void beingattacked ();
+    void init (std::vector<int>& level);
   };
 
 };
