@@ -22,9 +22,10 @@ namespace engine {
   protected:
     int character;
     state::Direction direction;
+    int num;
     // Operations
   public:
-    DirectionCommandEnemy (state::Direction id);
+    DirectionCommandEnemy (int i, state::Direction id);
     CommandTypeId getTypeId () const;
     int getCharacter () const;
     state::Direction getDirection () const;

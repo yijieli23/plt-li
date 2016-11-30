@@ -22,7 +22,7 @@ namespace ai{
     {
         int direction =rand()%4 + 1;
         std::cout<<idx<<":"<<direction<<std::endl;
-        commands.set(new engine::DirectionCommandEnemy((state::Direction)direction));
+ //       commands.set(new engine::DirectionCommandEnemy((state::Direction)direction));
     }
     
     

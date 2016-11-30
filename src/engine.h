@@ -18,4 +18,5 @@
 #include "engine/MoveCharacter.h"
 #include "engine/AttackUnit.h"
 #include "engine/DirectionCommandEnemy.h"
+#include "engine/DirectionCommandBullet.h"
 #endif

@@ -17,7 +17,7 @@ namespace state {
   class EnemyTank : public state::MobileElement {
     // Operations
   public:
-    EnemyTank (int x, int y);
+    EnemyTank ();
     bool isEnemyTank () const;
     Element* clone () const;
     void setColor (int c);

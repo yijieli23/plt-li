@@ -14,7 +14,7 @@ void testSFML() {
 }
 
 #include "state.hpp"
-
+#define N 8;
 using namespace std;
 using namespace state;
 int i;

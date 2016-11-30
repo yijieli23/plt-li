@@ -15,6 +15,7 @@
 #include "state/MobileElement.h"
 #include "state/JoueurTank.h"
 #include "state/EnemyTank.h"
+#include "state/Bullet.h"
 #include "state/StateEventId.h"
 #include "state/State.h"
 #include "state/ElementAlloc.h"
@@ -24,6 +25,5 @@
 #include "state/ListEvent.h"
 #include "state/Wood.h"
 #include "state/Iron.h"
-#include "state/Sea.h"
 #include "state/House.h"
 #endif

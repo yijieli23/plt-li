@@ -9,6 +9,7 @@ namespace state {
   class ElementGrid;
   class JoueurTank;
   class EnemyTank;
+  class Bullet;
   class State;
   class MobileElement;
   class ElementFactory;
@@ -20,6 +21,7 @@ namespace state {
 #include "ElementGrid.h"
 #include "JoueurTank.h"
 #include "EnemyTank.h"
+#include "Bullet.h"
 #include "StateEventId.h"
 #include "Observable.h"
 
@@ -36,7 +38,8 @@ namespace state {
     int epoch;
     JoueurTank joueur;
     std::vector<int> level;
-    EnemyTank et1;
+    std::vector<EnemyTank> ets;
+    Bullet blt;
     // Operations
   public:
     State ();
@@ -65,7 +68,9 @@ namespace state {
     const std::vector<int>& getLevel () const;
     std::vector<int>& getLevel ();
     void levelinit ();
-    EnemyTank& getEnemyTank ();
+    std::vector<EnemyTank>& getEnemyTank ();
+    Bullet& getbullet ();
+    void initEnemy (int x, int y);
   };
 
 };

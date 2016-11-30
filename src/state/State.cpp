@@ -12,7 +12,7 @@
 namespace state{
     
    
-State::State(): chars(*this), grid(*this), level(15*15), et1(0,0)
+State::State(): chars(*this), grid(*this), level(15*15)
 {
     epoch=0;
     for(int i=0;i<level.size();i++)
@@ -20,16 +20,24 @@ State::State(): chars(*this), grid(*this), level(15*15), et1(0,0)
     
     joueur.init(level);
     
-    
+    EnemyTank et1;
+    et1.setX(0);
+    et1.setY(0);
     et1.init(level);
-//   ets.push_back(et1);
-/*    EnemyTank et2(0, 7);
+    ets.push_back(et1);
+
+    EnemyTank et2;
+    et2.setX(0);
+    et2.setY(7);
     et2.init(level);
     ets.push_back(et2);
-    EnemyTank et3(0, 14);
+    
+    EnemyTank et3;
+    et3.setX(0);
+    et3.setY(14);
     et3.init(level);
     ets.push_back(et3);
- */ 
+
     
     House house;
     house.init(level);
@@ -162,8 +170,8 @@ void State::levelinit()
     
 }
 
-EnemyTank& State::getEnemyTank ()
+std::vector<EnemyTank>& State::getEnemyTank()
 {
-    return et1;
+    return ets;
 }
 };

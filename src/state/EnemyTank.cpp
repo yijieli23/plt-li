@@ -5,10 +5,9 @@
  */
 #include "EnemyTank.h"
 namespace state{
-EnemyTank::EnemyTank(int x,int y)
+EnemyTank::EnemyTank()
 {
-    this->x=x;
-    this->y=y;
+    
     this->orientation=SOUTH;
     life=1;
     speed=0.1;
