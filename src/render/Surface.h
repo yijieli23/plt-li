@@ -22,8 +22,7 @@ namespace render {
     void setSpriteTexture (int i, const StaticTile* tex);
     int afficher ();
     void update ();
-    void* multith (void* threadid);
-    void commandthread (int i);
+    void multith (int n);
   };
 
 };

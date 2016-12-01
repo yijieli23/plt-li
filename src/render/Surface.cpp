@@ -16,11 +16,15 @@
 #include "../ai/DumbAI.h"
 #include "engine/DirectionCommandEnemy.h"
 #include <cstdlib>
-#include <pthread.h>
+#include <utility>
+#include <thread>
+#include <chrono>
+#include <functional>
+#include <atomic>
+ 
 
 
 using namespace std;
-const int num=3;
 namespace render {
     
 
@@ -36,22 +40,17 @@ engine::Engine engine1;
     Surface::~Surface() {
 
     }
-    void Surface::commandthread(int i)
+    
+    void Surface::multith(int n)
     {
-        engine1.addCommand(new engine::DirectionCommandEnemy(i,state::Direction(rand()%4+1)));
-                    
-    }
-    void* Surface::multith(void* threadid)
-    {
-            int tid = *((int*)threadid);
-            commandthread(tid);
-            pthread_exit(NULL);
+       
+            engine1.addCommand(new engine::DirectionCommandEnemy(n,state::Direction(rand()%4+1)));
+
     }
     
 
     int Surface::afficher() {
-        pthread_t threads[num];
-        int index[num];
+    
    
    
         sf::RenderWindow window(sf::VideoMode(240, 240), "Battle");
@@ -72,7 +71,7 @@ engine::Engine engine1;
             std::cerr << "wrong" << std::endl;
         }
  
-    int flag=0;
+  
         while (window.isOpen()) {
             
             //   movecommand.move(level);
@@ -116,18 +115,40 @@ engine::Engine engine1;
                             break;
                     }
                     
-                    
-                    for(int i=0; i < num; i++ )
-                    {      
-                       index[i] = i; 
-                      int rc = pthread_create(&threads[i], NULL, multith, (void*)&(index[i]));
-                       if (rc)
-                       {
-                          cout << "Error:," << rc << endl;
-                          exit(-1);
-                       }
+                    for(int i=0;i<3;i++)
+                    {
+                        std::thread t(&Surface::multith, this, i);
+                        t.join();
                     }
-                    pthread_exit(NULL);
+                    
+                    }
+                default:
+                    break;    
+            }
+                
+    
+        }
+            engine1.update();
+        
+            if (!map1.load("res/Battle City.png", sf::Vector2u(16, 16), state1.getLevel(), 15, 15)) 
+            {
+                std::cerr << "wrong" << std::endl;
+            }
+            
+            window.clear();
+            window.draw(map1);
+            window.display();
+            
+        }
+        return 0;
+    
+}
+
+};
+
+ 
+                       
+                       
                 //    engine1.addCommand(new engine::DirectionCommandEnemy(0,state::Direction(rand()%4+1)));
                 //    engine1.addCommand(new engine::DirectionCommandEnemy(1,state::Direction(rand()%4+1)));
                 //    engine1.addCommand(new engine::DirectionCommandEnemy(2,state::Direction(rand()%4+1)));
@@ -148,34 +169,3 @@ engine::Engine engine1;
                         
                     }
                     */
-                    flag++;
-                    
-                    
-                    
-                    
-                    }
-                default:
-                    break;    
-            }
-                
-    
-        }
-         
-            
-            engine1.update();
-        
-            if (!map1.load("res/Battle City.png", sf::Vector2u(16, 16), state1.getLevel(), 15, 15)) 
-            {
-                std::cerr << "wrong" << std::endl;
-            }
-            
-            window.clear();
-            window.draw(map1);
-            window.display();
-            
-        }
-        return 0;
-    
-}
-
-};

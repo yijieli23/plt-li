@@ -8,6 +8,9 @@
 #include "state/JoueurTank.h"
 #include "engine/DirectionCommand.h"
 #include "render/Surface.h"
+#include <utility>
+#include <thread>
+
 
 void testSFML() {
     sf::Texture texture;
@@ -27,6 +30,8 @@ int main()
 
     render::Surface sur;
     sur.afficher();
+    
+
    
     return 0;
 }
